@@ -2,6 +2,7 @@
 
 ### TCC-Acompanhamento: Serviço que irá gerenciar a execução dos TCCs em um determinado período.
 
+
 Fazem parte desse serviço:
 > 1. Definição de marcos de entrega
 > 2. Planejamento de bancas
