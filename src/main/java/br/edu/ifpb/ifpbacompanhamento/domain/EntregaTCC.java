@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -33,7 +34,7 @@ public class EntregaTCC {
     private List<Documento> documentos;
 
     public EntregaTCC() {
-
+        this.documentos = new ArrayList<>();
     }
 
     public EntregaTCC(ZonedDateTime dataHoraMax, String comunicado, Long TCCId, Long coordenadorId, TipoEntrega tipoEntrega, List<Documento> documentos) {
@@ -43,6 +44,10 @@ public class EntregaTCC {
         this.coordenadorId = coordenadorId;
         this.tipoEntrega = tipoEntrega;
         this.documentos = documentos;
+    }
+
+    public boolean addDocumentos(Documento documento) {
+        return documentos.add(documento);
     }
 
     @Override

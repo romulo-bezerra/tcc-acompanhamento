@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -24,13 +25,17 @@ public class Banca {
     private Defesa defesa;
 
     public Banca() {
-
+        this.professores = new ArrayList<>();
     }
 
     public Banca(List<Long> professores, Integer coordenadorId, Defesa defesa) {
         this.professores = professores;
         this.coordenadorId = coordenadorId;
         this.defesa = defesa;
+    }
+
+    public boolean addProfessor(Long professorId){
+        return professores.add(professorId);
     }
 
     @Override
