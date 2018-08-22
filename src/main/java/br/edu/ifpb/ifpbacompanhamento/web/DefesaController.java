@@ -1,6 +1,8 @@
 package br.edu.ifpb.ifpbacompanhamento.web;
 
 import br.edu.ifpb.ifpbacompanhamento.service.DefesaService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpHeaders;
 import br.edu.ifpb.ifpbacompanhamento.domain.Defesa;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/ifpbacompanhamento/defesa")
+@Api(value = "DefesaController Resource", description = "Serviços pertinentes à Defesas de TCCs")
 public class DefesaController {
 
     private final DefesaService defesaService;
@@ -20,16 +23,19 @@ public class DefesaController {
     }
 
     @PostMapping
+    @ApiOperation(value = "Salva nova Defesa")
     public ResponseEntity<Defesa> salvarDefesa(@RequestBody Defesa defesa) {
         return ResponseEntity.ok().body(defesaService.salvarDefesa(defesa));
     }
 
     @GetMapping("todas")
+    @ApiOperation(value = "Lista todas as Defesas")
     public ResponseEntity<List<Defesa>> getTodas() {
         return ResponseEntity.ok().body(defesaService.listarTodas());
     }
 
     @GetMapping
+    @ApiOperation(value = "Busca uma Defesa por id")
     public ResponseEntity<Defesa> findDefesaById(@RequestParam("id") Long id) {
         Optional<Defesa> defesa = defesaService.buscarPorId(id);
         if (defesa.isPresent()) return ResponseEntity.ok().body(defesa.get());
@@ -41,11 +47,13 @@ public class DefesaController {
     }
 
     @PutMapping
+    @ApiOperation(value = "atualiza uma Defesa com o novo estado")
     public ResponseEntity<Defesa> atualizaDefesa (@RequestBody Defesa defesa) {
         return ResponseEntity.ok().body(defesaService.salvarDefesa(defesa));
     }
 
     @DeleteMapping
+    @ApiOperation(value = "Deleta uma Defesa pelo id")
     public ResponseEntity<Void> deleteDefesa(@RequestParam("id") Long id) {
         Optional<Defesa> defesa = defesaService.buscarPorId(id);
         if (defesa.isPresent()) {

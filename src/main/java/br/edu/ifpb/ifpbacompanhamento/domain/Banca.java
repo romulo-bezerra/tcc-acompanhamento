@@ -17,6 +17,7 @@ public class Banca {
     @SequenceGenerator(initialValue = 1, schema = "public", sequenceName = "banca_sequence", name = "banca_sequence_gen", allocationSize = 1)
     private Long id;
     @Column(nullable = false)
+    @ElementCollection
     private List<Long> professores;
     @Column(nullable = false)
     private Integer coordenadorId;

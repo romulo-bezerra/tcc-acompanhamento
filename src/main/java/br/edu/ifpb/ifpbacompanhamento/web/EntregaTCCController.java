@@ -2,6 +2,8 @@ package br.edu.ifpb.ifpbacompanhamento.web;
 
 import br.edu.ifpb.ifpbacompanhamento.domain.EntregaTCC;
 import br.edu.ifpb.ifpbacompanhamento.service.EntregaTCCService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/ifpbacompanhamento/entregatcc")
+@Api(value = "EntregaTCCController Resource", description = "Serviços pertinentes à Entregas de TCCs")
 public class EntregaTCCController {
 
     private final EntregaTCCService entregaTCCService;
@@ -20,16 +23,19 @@ public class EntregaTCCController {
     }
 
     @PostMapping
+    @ApiOperation(value = "Salva uma nova Entrega de TCC")
     public ResponseEntity<EntregaTCC> salvarEntregaTCC(@RequestBody EntregaTCC entregaTCC) {
         return ResponseEntity.ok().body(entregaTCCService.salvarEntregaTCC(entregaTCC));
     }
 
     @GetMapping("todas")
+    @ApiOperation(value = "Lista todas as Entregas de TCCs")
     public ResponseEntity<List<EntregaTCC>> getTodas() {
         return ResponseEntity.ok().body(entregaTCCService.listarTodas());
     }
 
     @GetMapping
+    @ApiOperation(value = "Busca uma Entrega de TCC pelo id")
     public ResponseEntity<EntregaTCC> findEntregaTCCById(@RequestParam("id") Long id) {
         Optional<EntregaTCC> entregaTCC = entregaTCCService.buscarPorId(id);
         if (entregaTCC.isPresent()) return ResponseEntity.ok().body(entregaTCC.get());
@@ -41,11 +47,13 @@ public class EntregaTCCController {
     }
 
     @PutMapping
+    @ApiOperation(value = "Atualiza uma Entrega de TCC com o novo estado")
     public ResponseEntity<EntregaTCC> atualizaEntregaTCC (@RequestBody EntregaTCC entregaTCC) {
         return ResponseEntity.ok().body(entregaTCCService.salvarEntregaTCC(entregaTCC));
     }
 
     @DeleteMapping
+    @ApiOperation(value = "Deleta uma Entrega de TCC pelo id")
     public ResponseEntity<Void> deleteEntregaTCC(@RequestParam("id") Long id) {
         Optional<EntregaTCC> entregaTCC = entregaTCCService.buscarPorId(id);
         if (entregaTCC.isPresent()) {
