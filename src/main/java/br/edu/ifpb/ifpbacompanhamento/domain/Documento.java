@@ -1,5 +1,7 @@
 package br.edu.ifpb.ifpbacompanhamento.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +11,9 @@ import java.time.ZonedDateTime;
 @Getter
 @Setter
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Documento {
 
     @Id

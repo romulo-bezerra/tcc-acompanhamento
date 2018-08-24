@@ -18,9 +18,9 @@ public class TCC {
     private Long id;
     @Column(nullable = false)
     private String semestre;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private Long alunoId;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private Long orientadorId;
     @Column(nullable = false)
     private Long tema;
@@ -30,7 +30,7 @@ public class TCC {
     private TipoTCC tipo;
     @Enumerated
     private StatusTCC statusTCC;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private Long cursoId;
 
     public TCC() {

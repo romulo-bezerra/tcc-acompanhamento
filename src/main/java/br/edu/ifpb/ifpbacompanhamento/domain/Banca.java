@@ -19,7 +19,7 @@ public class Banca {
     @Column(nullable = false)
     @ElementCollection
     private List<Long> professores;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private Integer coordenadorId;
 
     @OneToOne

@@ -1,6 +1,8 @@
 package br.edu.ifpb.ifpbacompanhamento.domain;
 
 import br.edu.ifpb.ifpbacompanhamento.domain.enums.TipoEntrega;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +14,9 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class EntregaTCC {
 
     @Id
@@ -22,9 +27,9 @@ public class EntregaTCC {
     private ZonedDateTime dataHoraMax;
     @Column(nullable = false)
     private String comunicado;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private Long TCCId;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private Long coordenadorId;
     @Column(nullable = false)
     @Enumerated

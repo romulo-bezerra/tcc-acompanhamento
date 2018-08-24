@@ -17,9 +17,9 @@ public class Defesa {
     private Long id;
     @Column(nullable = false)
     private String comunicado;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private Long TCCId;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private Long ambienteId;
     @Column(nullable = false)
     private ZonedDateTime dataHora;
